@@ -1,0 +1,57 @@
+.backdrop {
+  position: fixed;
+  padding-top: 60px;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgb(40, 40, 40);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+}
+.list {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  gap: 50px;
+}
+
+.link {
+  font-size: 17px;
+  color: rgba(239, 238, 224, 0.25);
+  text-decoration: none;
+  display: flex;
+  align-items: end;
+  gap: 30px;
+}
+.active {
+  color: #fff;
+}
+.link svg {
+  color: rgba(239, 238, 224, 0.25);
+  height: 32px;
+  width: 32px;
+}
+.active svg {
+  color: rgb(250, 205, 102);
+  height: 32px;
+  width: 32px;
+}
+.closeBtn {
+  border: none;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  font-size: 17px;
+  color: #fff;
+}
+.closeBtn svg {
+  width: 35px;
+  height: 35px;
+  color: #fff;
+}

@@ -4,13 +4,12 @@
 }
 .headerContainer {
   display: flex;
-  align-items: center;
+  align-items: start;
   justify-content: space-between;
 }
 .link {
   position: relative;
   display: block;
-  padding: 0;
 }
 .firstIcon {
   width: 24px;
@@ -66,7 +65,8 @@
     justify-content: start;
     gap: 100px;
   }
-  .btn {
+
+  .header {
     display: none;
   }
 }

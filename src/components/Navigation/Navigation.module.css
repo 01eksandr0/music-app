@@ -1,0 +1,53 @@
+.nav {
+  display: none;
+}
+@media screen and (min-width: 1280px) {
+  .nav {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 60px;
+  }
+  .list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    background-color: rgb(40, 40, 40);
+    padding: 26px 17px;
+    border-radius: 32px;
+  }
+  .linkLogo {
+    position: relative;
+    display: block;
+    width: 40px;
+  }
+  .firstIcon {
+    width: 30px;
+    height: 40px;
+    color: rgb(250, 205, 102);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .secondIcon {
+    width: 35px;
+    height: 45px;
+    color: rgb(164, 199, 198);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-30%, -30%);
+  }
+  .link svg {
+    color: rgba(239, 238, 224, 0.25);
+    height: 24px;
+    width: 24px;
+  }
+  .active svg {
+    color: rgb(250, 205, 102);
+    height: 24px;
+    width: 24px;
+  }
+}
