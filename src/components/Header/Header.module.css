@@ -1,0 +1,72 @@
+.header {
+  padding: 24px 0;
+  width: 100%;
+}
+.headerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.link {
+  position: relative;
+  display: block;
+  padding: 0;
+}
+.firstIcon {
+  width: 24px;
+  height: 30px;
+  color: rgb(250, 205, 102);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.secondIcon {
+  width: 28px;
+  height: 32px;
+  color: rgb(164, 199, 198);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-30%, -30%);
+}
+.form {
+  position: relative;
+}
+.formBtn {
+  position: absolute;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+}
+.input {
+  height: 18px;
+  width: 47px;
+  border: none;
+  background-color: transparent;
+  padding-left: 30px;
+  outline: transparent;
+  caret-color: rgba(255, 255, 255, 0.25);
+  color: #fff;
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.25);
+  }
+}
+.btn {
+  border: none;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media screen and (min-width: 1280px) {
+  .headerContainer {
+    justify-content: start;
+    gap: 100px;
+  }
+  .btn {
+    display: none;
+  }
+}
