@@ -7,12 +7,13 @@ export const HomeHero = () => {
   return (
     <section className={css.hero}>
       <div className={css.heroContainer}>
-        <div>
+        <div className={css.imgCont}>
           <img
             className={css.backImg}
             src="https://variety.com/wp-content/uploads/2022/07/Music-Streaming-Wars.jpg?w=1024"
             alt=""
           />
+          <p className={css.title}>Music is my life</p>
         </div>
         <ul className={css.list}>
           <li>
