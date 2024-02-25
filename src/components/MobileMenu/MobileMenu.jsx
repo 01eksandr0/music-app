@@ -17,25 +17,37 @@ export const MobileMenu = ({ closeMenu }) => {
       <nav>
         <ul className={css.list}>
           <li>
-            <NavLink to="/" className={buildLinkClass}>
+            <NavLink to="/" className={buildLinkClass} onClick={closeMenu}>
               <AiFillHome />
               Home
             </NavLink>
           </li>
           <li>
-            <NavLink to="/library" className={buildLinkClass}>
+            <NavLink
+              to="/library"
+              className={buildLinkClass}
+              onClick={closeMenu}
+            >
               <MdLibraryMusic />
               My collections
             </NavLink>
           </li>
           <li>
-            <NavLink to="/search" className={buildLinkClass}>
+            <NavLink
+              to="/search"
+              className={buildLinkClass}
+              onClick={closeMenu}
+            >
               <FaSearch />
               Search
             </NavLink>
           </li>
           <li>
-            <NavLink to="/my-profile" className={buildLinkClass}>
+            <NavLink
+              to="/my-profile"
+              className={buildLinkClass}
+              onClick={closeMenu}
+            >
               <FaUserAlt /> Profile
             </NavLink>
           </li>

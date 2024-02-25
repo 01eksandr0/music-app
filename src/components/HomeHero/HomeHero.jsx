@@ -1,6 +1,7 @@
 import React from "react";
 import css from "./HomeHero.module.css";
 import { FaHeart } from "react-icons/fa";
+import { FaPlus } from "react-icons/fa6";
 
 export const HomeHero = () => {
   return (
@@ -25,13 +26,34 @@ export const HomeHero = () => {
             </div>
           </li>
           <li>
-            <div className={css.heroElement}></div>
+            <div className={css.heroElement}>
+              <div className={css.itemImgCont}>
+                <div className={css.itemPlus}>
+                  <FaPlus className={css.icon} />
+                </div>
+              </div>
+              <p className={css.itemText}>Add playlist</p>
+            </div>
           </li>
           <li>
-            <div className={css.heroElement}></div>
+            <div className={css.heroElement}>
+              <div className={css.itemImgCont}>
+                <div className={css.itemPlus}>
+                  <FaPlus className={css.icon} />
+                </div>
+              </div>
+              <p className={css.itemText}>Add playlist</p>
+            </div>
           </li>
           <li>
-            <div className={css.heroElement}></div>
+            <div className={css.heroElement}>
+              <div className={css.itemImgCont}>
+                <div className={css.itemPlus}>
+                  <FaPlus className={css.icon} />
+                </div>
+              </div>
+              <p className={css.itemText}>Add playlist</p>
+            </div>
           </li>
         </ul>
       </div>

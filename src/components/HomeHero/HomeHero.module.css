@@ -36,6 +36,19 @@
     rgba(147, 56, 218, 1) 95%
   );
 }
+.itemPlus {
+  height: 90px;
+  width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    199deg,
+    rgba(0, 0, 0, 1) 24%,
+    rgba(255, 255, 255, 1) 95%
+  );
+}
 .icon {
   height: 24px;
   width: 24px;
@@ -63,10 +76,12 @@
     justify-content: start;
     gap: 20px;
   }
-  .itemImg {
+  .itemImg,
+  .itemPlus {
     height: 90px;
     width: 90px;
   }
+
   .icon {
     height: 24px;
     width: 24px;
