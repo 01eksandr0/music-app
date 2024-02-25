@@ -54,8 +54,26 @@ export const getRecomendTracks = async () => {
         },
       }
     );
-    console.log(response.data.tracks);
+    //console.log(response.data.tracks);
     return response.data.tracks;
+  } catch (error) {
+    console.error("Error:", error.response.data);
+  }
+};
+// ==
+export const getRecomendArtists = async () => {
+  const token = await getToken();
+  try {
+    const response = await axios.get(
+      `https://api.spotify.com/v1/artists/3YQKmKGau1PzlVlkL1iodx/related-artists`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    console.log(response.data.artists);
+    return response.data.artists;
   } catch (error) {
     console.error("Error:", error.response.data);
   }
