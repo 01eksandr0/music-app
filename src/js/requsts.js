@@ -5,7 +5,7 @@ const clientSecret = "132aa0e32d6844ed9b2df874a649502e";
 const id = "1l5LxX34FgwqlhvMb7BPXq";
 
 const token =
-  "BQBR-SRu-NcuxOUTAxsrqINdBcnPg098ilQb0-c_neaDOUdkPcXAj6RCIn7o1ZqUfkZR03wStDjjeorL17X85p5Kpy6IR2ypt8T8_IU9J1M6cdcbLR0";
+  "BQBcrquJBnYPLDfC6H0C-OqRwBIeabm8wCODxIxXXutMa3SvqiJEdmA_7BeZgkDS0v-qvlNoCdQXQj3XaHPkAPAkd33XSLd8B7mgl0cZfB7EmHzQSAk";
 export const getToken = async () => {
   try {
     const response = await axios.post(
@@ -44,7 +44,8 @@ export const searchAlbums = async () => {
     console.error("Error:", error.response.data);
   }
 };
-export const getTrackInfo = async () => {
+// ==
+export const getRecomendTracks = async () => {
   try {
     const response = await axios.get(
       `https://api.spotify.com/v1/recommendations?seed_artists=4NHQUGzhtTLFvgF5SZesLK`,
@@ -55,8 +56,7 @@ export const getTrackInfo = async () => {
       }
     );
 
-    console.log("Track Info:", response.data);
-    return response.data;
+    return response.data.tracks;
   } catch (error) {
     console.error("Error:", error.response.data);
   }
