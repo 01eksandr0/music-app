@@ -6,6 +6,7 @@ import css from "./RecomendArtists.module.css";
 import { MySwiper } from "../Swiper/Swiper";
 import { RecomendTrackItem } from "../RecomendTrackItem/RecomendTrackItem";
 import { getRecomendArtists } from "../../js/requsts";
+import { Link } from "react-router-dom";
 
 export const RecomendArtists = () => {
   const [artists, setArtists] = useState([]);
@@ -24,13 +25,15 @@ export const RecomendArtists = () => {
     <div className={css.container}>
       <h2 className={css.title}>Recommended artists.</h2>
       <MySwiper>
-        {artists.map((track) => (
-          <SwiperSlide key={track.id}>
-            <RecomendTrackItem
-              src={track.images[0].url}
-              id={track.id}
-              name={track.name}
-            />
+        {artists.map((artist) => (
+          <SwiperSlide key={artist.id}>
+            <Link to={`musician/${artist.id}`}>
+              <RecomendTrackItem
+                src={artist.images[0].url}
+                id={artist.id}
+                name={artist.name}
+              />
+            </Link>
           </SwiperSlide>
         ))}
       </MySwiper>

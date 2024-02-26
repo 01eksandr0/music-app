@@ -1,23 +1,19 @@
 import React from "react";
 import css from "./InfoArtistHero.module.css";
 import { IoMdPlayCircle } from "react-icons/io";
-import { FaRegHeart } from "react-icons/fa6";
+import { RiHeart3Fill } from "react-icons/ri";
 import { Button } from "../UI/Button/Button";
 
-export const InfoArtistHero = () => {
+export const InfoArtistHero = ({ name, src, total }) => {
   return (
     <div className={css.hero}>
       <div className={css.imgCont}>
-        <img
-          className={css.img}
-          src="https://variety.com/wp-content/uploads/2023/03/lady-gaga-2022.jpg?w=1000"
-          alt=""
-        />
+        <img className={css.img} src={src} alt={name} />
       </div>
       <div>
-        <h2 className={css.name}>Lady Gaga</h2>
+        <h2 className={css.name}>{name}</h2>
         <p className={css.listeners}>
-          Listeners per month: <span className={css.number}>1233131</span>
+          Listeners per month: <span className={css.number}>{total}</span>
         </p>
         <ul className={css.btnList}>
           <li>
@@ -28,7 +24,7 @@ export const InfoArtistHero = () => {
           </li>
           <li>
             <Button>
-              <FaRegHeart size={18} />
+              <RiHeart3Fill size={18} />
               Add to collection
             </Button>
           </li>

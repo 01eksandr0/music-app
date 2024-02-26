@@ -2,7 +2,7 @@ import axios from "axios";
 
 const clientId = "6622062e041b4e199884ee38c1db27cd";
 const clientSecret = "d1a8d2587c6a4ffd85c7a7c7f56f563f";
-//const id = "d1a8d2587c6a4ffd85c7a7c7f56f563f";
+
 export const getToken = async () => {
   try {
     const response = await axios.post(
@@ -14,9 +14,7 @@ export const getToken = async () => {
         },
       }
     );
-
     const accessToken = response.data.access_token;
-
     console.log("Access Token:", accessToken);
     return accessToken;
   } catch (error) {
@@ -29,26 +27,6 @@ const getRefreshToken = async () => {
   localStorage.setItem("token", newToken);
 };
 
-export const searchAlbums = async () => {
-  const token = await getToken();
-  try {
-    const response = await axios.get("https://api.spotify.com/v1/search", {
-      params: {
-        q: "elvise",
-        type: "album",
-      },
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-
-    console.log("Response:", response.data);
-    return response.data;
-  } catch (error) {
-    console.error("Error:", error.response.data);
-  }
-};
-// ==
 export const getRecomendTracks = async () => {
   const token = await localStorage.getItem("token");
   try {
@@ -84,5 +62,49 @@ export const getRecomendArtists = async () => {
   } catch (error) {
     getRefreshToken();
     getRecomendArtists();
+  }
+};
+
+// ==
+
+export const getArtistInfo = async (id) => {
+  const token = await localStorage.getItem("token");
+  try {
+    const response = await axios.get(
+      `https://api.spotify.com/v1/artists/${id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    // console.log(response.data);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    getRefreshToken();
+    getArtistInfo();
+  }
+};
+
+// ==
+
+export const getTopTrecksActor = async (id) => {
+  const token = await localStorage.getItem("token");
+  try {
+    const response = await axios.get(
+      `https://api.spotify.com/v1/artists/${id}/top-tracks?market=es`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    // console.log(response.data);
+    return response.data.tracks;
+  } catch (error) {
+    console.log(error);
+    //  getRefreshToken();
+    // getTopTrecksActor();
   }
 };
