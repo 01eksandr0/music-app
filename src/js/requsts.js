@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const clientId = "6622062e041b4e199884ee38c1db27cd";
-const clientSecret = "d1a8d2587c6a4ffd85c7a7c7f56f563f";
+const clientId = "5fcc5565997d4dc9a4b4238041447fdf";
+const clientSecret = "8830e7436d914dc88a152f7932535969";
 
 export const getToken = async () => {
   try {
@@ -60,7 +60,6 @@ export const getRecomendArtists = async () => {
     //console.log(response.data.artists);
     return response.data.artists;
   } catch (error) {
-    getRefreshToken();
     getRecomendArtists();
   }
 };
@@ -82,7 +81,7 @@ export const getArtistInfo = async (id) => {
     return response.data;
   } catch (error) {
     console.log(error);
-    getRefreshToken();
+
     getArtistInfo();
   }
 };

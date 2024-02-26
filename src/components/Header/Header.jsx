@@ -4,6 +4,7 @@ import { IoMusicalNoteSharp } from "react-icons/io5";
 import { IoMusicalNotes } from "react-icons/io5";
 import { HiMenuAlt4 } from "react-icons/hi";
 import { MobileMenu } from "../MobileMenu/MobileMenu";
+import { Player } from "../Player/Player";
 
 export const Header = () => {
   const [isModal, setModal] = useState(false);
