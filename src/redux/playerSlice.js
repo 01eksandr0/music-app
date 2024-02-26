@@ -6,8 +6,7 @@ const playerSlice = createSlice({
   reducers: {
     openPlayer: {
       reducer(state, action) {
-        state.status = true;
-        state.id = action.payload.id;
+        return { status: true, id: action.payload.id };
       },
       prepare(id) {
         return { payload: { id } };

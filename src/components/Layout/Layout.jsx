@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import css from "./Layout.module.css";
 import { Header } from "../Header/Header";
 import { Main } from "../Main/Main";
@@ -10,11 +10,11 @@ import { getPlayer } from "../../redux/selectors";
 
 export const Layout = () => {
   const player = useSelector(getPlayer);
-  console.log(player);
+
   return (
     <div>
       <Header />
-      {player && <Player />}
+      {player.status && <Player />}
       <Main>
         <Navigation />
         <Outlet />

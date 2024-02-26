@@ -24,6 +24,7 @@ export const getToken = async () => {
 
 const getRefreshToken = async () => {
   const newToken = await getToken();
+  console.log(newToken);
   localStorage.setItem("token", newToken);
 };
 
@@ -112,14 +113,15 @@ export const getAudioNow = async (id) => {
   const token = await localStorage.getItem("token");
   try {
     const response = await axios.get(
-      `https://api.spotify.com/v1/audio-features/${id}`,
+      `https://api.spotify.com/v1/tracks/${id}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       }
     );
-    console.log(response.data);
+    // console.log(response.data);
+
     return response.data;
   } catch (error) {
     console.log(error);
