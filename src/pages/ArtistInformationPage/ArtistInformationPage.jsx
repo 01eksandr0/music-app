@@ -9,26 +9,26 @@ export const ArtistInformationPage = () => {
   const [info, setInfo] = useState({});
   const [tracks, setTracks] = useState([]);
   const params = useParams();
-  // useEffect(() => {
-  //   const createArtist = async () => {
-  //     try {
-  //       const response = await getArtistInfo(params.id);
-  //       setInfo(response);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-  //   createArtist();
-  //   const createList = async () => {
-  //     try {
-  //       const response = await getTopTrecksActor(params.id);
-  //       setTracks(response);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-  //   createList();
-  // }, []);
+  useEffect(() => {
+    const createArtist = async () => {
+      try {
+        const response = await getArtistInfo(params.id);
+        setInfo(response);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    createArtist();
+    const createList = async () => {
+      try {
+        const response = await getTopTrecksActor(params.id);
+        setTracks(response);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    createList();
+  }, []);
   return (
     <div className={css.info}>
       {info.name && (

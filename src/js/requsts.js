@@ -107,3 +107,23 @@ export const getTopTrecksActor = async (id) => {
     // getTopTrecksActor();
   }
 };
+
+export const getAudioNow = async (id) => {
+  const token = await localStorage.getItem("token");
+  try {
+    const response = await axios.get(
+      `https://api.spotify.com/v1/audio-features/${id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    console.log(response.data);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    //  getRefreshToken();
+    // getTopTrecksActor();
+  }
+};

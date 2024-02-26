@@ -3,9 +3,9 @@ import css from "./ArtistTrackItem.module.css";
 import { RiHeart3Fill } from "react-icons/ri";
 import { IoMdMore } from "react-icons/io";
 
-export const ArtistTrackItem = ({ name, src, author }) => {
+export const ArtistTrackItem = ({ name, src, author, onClick }) => {
   return (
-    <div className={css.item}>
+    <div className={css.item} onClick={onClick}>
       <div className={css.imgCont}>
         <img height={50} width={50} src={src} alt={name} />
         <button type="button">
