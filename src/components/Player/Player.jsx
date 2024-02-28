@@ -14,7 +14,9 @@ export const Player = () => {
   const { id } = useSelector(getPlayer);
   const [audio, setAudio] = useState(false);
   const [track, setTrack] = useState({});
+  const [time, setTime] = useState(0);
   const audioRef = useRef(null);
+  audioRef.currentTime = time;
 
   useEffect(() => {
     const getTrack = async () => {
@@ -32,6 +34,14 @@ export const Player = () => {
       setAudio(false);
       audioRef.current.pause();
     }
+  };
+  const musicLine = (e) => {
+    const { duration, currentTime } = audioRef.current;
+    setTime((currentTime / duration) * 100);
+  };
+
+  const changeTime = (time) => {
+    audioRef.current.currentTime = time;
   };
   const dynamicClass = clsx(css.play, audio && css.active);
 
@@ -63,10 +73,16 @@ export const Player = () => {
                 <IoPlaySkipForwardSharp size={25} className={css.next} />
               </button>
             </div>
-            <Range />
+            <Range time={time} audioRef={audioRef} changeTime={changeTime} />
           </div>
           <input className={css.rangeMusic} type="range" name="" id="" />
-          <audio autoPlay id="ref" ref={audioRef} src={track.preview}></audio>
+          <audio
+            autoPlay
+            id="ref"
+            ref={audioRef}
+            src={track.preview}
+            onTimeUpdate={musicLine}
+          ></audio>
         </div>
       )}
     </div>

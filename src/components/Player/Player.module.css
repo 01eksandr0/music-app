@@ -90,6 +90,9 @@
   .playerCont {
     padding: 0 100px;
   }
+  .range {
+    width: 300px;
+  }
   .rangeMusic {
     display: block;
   }

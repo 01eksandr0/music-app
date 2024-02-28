@@ -45,3 +45,8 @@
 .sliderCont .slider::-webkit-slider-thumb:active {
   box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.4);
 }
+@media screen and (min-width: 1280px) {
+  .sliderCont .slider {
+    width: 300px;
+  }
+}
