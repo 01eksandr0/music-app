@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import css from "./Range.module.css";
 
 export const Range = ({ time, changeTime }) => {

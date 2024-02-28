@@ -41,7 +41,8 @@ export const Player = () => {
   };
 
   const changeTime = (time) => {
-    audioRef.current.currentTime = time;
+    audioRef.current.currentTime = time * 0.33;
+    console.log(time);
   };
   const dynamicClass = clsx(css.play, audio && css.active);
 
