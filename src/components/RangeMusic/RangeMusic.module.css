@@ -5,19 +5,20 @@
   height: 1px;
   overflow: hidden;
 }
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: transparent;
+}
 @media screen and (min-width: 1280px) {
   .container {
     display: flex;
     align-items: center;
     gap: 5px;
   }
-  .btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    background-color: transparent;
-  }
+
   .middle {
     display: block;
     width: 100px;
