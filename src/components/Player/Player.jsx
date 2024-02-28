@@ -5,12 +5,15 @@ import { IoPlaySkipForwardSharp } from "react-icons/io5";
 import { IoPlay } from "react-icons/io5";
 import { FaPause } from "react-icons/fa6";
 import clsx from "clsx";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getPlayer } from "../../redux/selectors";
 import { getTrackById } from "../../js/requsts";
 import { Range } from "../UI/Range/Range";
+import { closePlayer, openPlayer } from "../../redux/playerSlice";
+import { RangeMusic } from "../RangeMusic/RangeMusic";
 
 export const Player = () => {
+  const dispatch = useDispatch();
   const { id } = useSelector(getPlayer);
   const [audio, setAudio] = useState(false);
   const [track, setTrack] = useState({});
@@ -35,13 +38,22 @@ export const Player = () => {
       audioRef.current.pause();
     }
   };
-  const musicLine = (e) => {
+  const musicLine = () => {
     const { duration, currentTime } = audioRef.current;
+
+    if (duration == currentTime) {
+      console.log(1);
+      dispatch(closePlayer());
+    }
     setTime((currentTime / duration) * 100);
   };
 
   const changeTime = (time) => {
     audioRef.current.currentTime = time * 0.33;
+  };
+
+  const changeVolume = (volume) => {
+    audioRef.current.volume = volume / 100;
   };
   const dynamicClass = clsx(css.play, audio && css.active);
   return (
@@ -78,7 +90,7 @@ export const Player = () => {
             </div>
             <Range time={time} audioRef={audioRef} changeTime={changeTime} />
           </div>
-          <input className={css.rangeMusic} type="range" name="" id="" />
+          <RangeMusic changeVolume={changeVolume} />
           <audio
             autoPlay
             id="ref"

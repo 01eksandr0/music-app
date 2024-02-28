@@ -12,7 +12,16 @@ const playerSlice = createSlice({
         return { payload: { id } };
       },
     },
+    closePlayer: {
+      reducer(state) {
+        return { status: false, id: "" };
+      },
+      prepare() {
+        return {};
+      },
+    },
   },
 });
-export const { openPlayer } = playerSlice.actions;
+
+export const { openPlayer, closePlayer } = playerSlice.actions;
 export const playerReduser = playerSlice.reducer;
