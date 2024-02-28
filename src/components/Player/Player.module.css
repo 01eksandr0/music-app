@@ -77,13 +77,20 @@
   fill: #fff;
 }
 .range {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  width: 200px;
+}
+.rangeMusic {
   display: none;
 }
 @media screen and (min-width: 1280px) {
   .playerCont {
     padding: 0 100px;
   }
-  .range {
+  .rangeMusic {
     display: block;
   }
 }

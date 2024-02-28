@@ -8,6 +8,7 @@ import clsx from "clsx";
 import { useSelector } from "react-redux";
 import { getPlayer } from "../../redux/selectors";
 import { getTrackById } from "../../js/requsts";
+import { Range } from "../UI/Range/Range";
 
 export const Player = () => {
   const { id } = useSelector(getPlayer);
@@ -50,18 +51,21 @@ export const Player = () => {
               <p className={css.name}>{track.artist.name}</p>
             </div>
           </div>
-          <div className={css.control}>
-            <button type="button" className={css.btn}>
-              <IoPlaySkipBackSharp size={25} className={css.next} />
-            </button>
-            <button type="button" className={dynamicClass} onClick={playA}>
-              {audio ? <IoPlay size={20} /> : <FaPause size={18} />}
-            </button>
-            <button type="button" className={css.btn}>
-              <IoPlaySkipForwardSharp size={25} className={css.next} />
-            </button>
+          <div className={css.range}>
+            <div className={css.control}>
+              <button type="button" className={css.btn}>
+                <IoPlaySkipBackSharp size={25} className={css.next} />
+              </button>
+              <button type="button" className={dynamicClass} onClick={playA}>
+                {audio ? <IoPlay size={20} /> : <FaPause size={18} />}
+              </button>
+              <button type="button" className={css.btn}>
+                <IoPlaySkipForwardSharp size={25} className={css.next} />
+              </button>
+            </div>
+            <Range />
           </div>
-          <input className={css.range} type="range" name="" id="" />
+          <input className={css.rangeMusic} type="range" name="" id="" />
           <audio autoPlay id="ref" ref={audioRef} src={track.preview}></audio>
         </div>
       )}
