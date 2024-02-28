@@ -42,10 +42,8 @@ export const Player = () => {
 
   const changeTime = (time) => {
     audioRef.current.currentTime = time * 0.33;
-    console.log(time);
   };
   const dynamicClass = clsx(css.play, audio && css.active);
-
   return (
     <div className={css.backdrop}>
       {track.title && (
@@ -68,7 +66,11 @@ export const Player = () => {
                 <IoPlaySkipBackSharp size={25} className={css.next} />
               </button>
               <button type="button" className={dynamicClass} onClick={playA}>
-                {audio ? <IoPlay size={20} /> : <FaPause size={18} />}
+                {audio ? (
+                  <IoPlay size={20} color="#fff" />
+                ) : (
+                  <FaPause size={18} color="#fff" />
+                )}
               </button>
               <button type="button" className={css.btn}>
                 <IoPlaySkipForwardSharp size={25} className={css.next} />
