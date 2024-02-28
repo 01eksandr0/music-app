@@ -1,5 +1,9 @@
 .middle {
-  display: none;
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 }
 @media screen and (min-width: 1280px) {
   .container {
@@ -17,6 +21,9 @@
   .middle {
     display: block;
     width: 100px;
+    height: auto;
+    opacity: 1;
+    position: static;
   }
   .sliderCont {
     position: relative;
