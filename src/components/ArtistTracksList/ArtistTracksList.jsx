@@ -16,9 +16,9 @@ export const ArtistTracksList = ({ tracks }) => {
         {tracks.map((item, i) => (
           <li key={i} onClick={() => createPlayer(item.id)}>
             <ArtistTrackItem
-              name={item.name}
-              src={item.album.images[0].url}
-              author={item.artists[0].name}
+              name={item.title}
+              src={item.album.cover_big}
+              author={item.artist.name}
             />
           </li>
         ))}

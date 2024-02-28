@@ -1,131 +1,61 @@
 import axios from "axios";
 
-const clientId = "5fcc5565997d4dc9a4b4238041447fdf";
-const clientSecret = "8830e7436d914dc88a152f7932535969";
-
-export const getToken = async () => {
+//
+export const getTrackById = async (id) => {
   try {
-    const response = await axios.post(
-      "https://accounts.spotify.com/api/token",
-      `grant_type=client_credentials&client_id=${clientId}&client_secret=${clientSecret}`,
+    const { data } = await axios.get(
+      `https://deezerdevs-deezer.p.rapidapi.com/track/${id}`,
       {
         headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
+          "X-RapidAPI-Key":
+            "b5f3830a22mshe45b47b7cb5bfcdp1dcd0djsn18b379206e77",
+          "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
         },
       }
     );
-    const accessToken = response.data.access_token;
-    console.log("Access Token:", accessToken);
-    return accessToken;
-  } catch (error) {
-    console.error("Error:", error.response.data);
-  }
-};
 
-const getRefreshToken = async () => {
-  const newToken = await getToken();
-  console.log(newToken);
-  localStorage.setItem("token", newToken);
-};
-
-export const getRecomendTracks = async () => {
-  const token = await localStorage.getItem("token");
-  try {
-    const response = await axios.get(
-      `https://api.spotify.com/v1/recommendations?seed_artists=4NHQUGzhtTLFvgF5SZesLK`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-    //console.log(response.data.tracks);
-    return response.data.tracks;
-  } catch (error) {
-    getRefreshToken();
-    getRecomendTracks();
-  }
-};
-// ==
-export const getRecomendArtists = async () => {
-  const token = await localStorage.getItem("token");
-  try {
-    const response = await axios.get(
-      `https://api.spotify.com/v1/artists/3YQKmKGau1PzlVlkL1iodx/related-artists`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-    //console.log(response.data.artists);
-    return response.data.artists;
-  } catch (error) {
-    getRecomendArtists();
-  }
-};
-
-// ==
-
-export const getArtistInfo = async (id) => {
-  const token = await localStorage.getItem("token");
-  try {
-    const response = await axios.get(
-      `https://api.spotify.com/v1/artists/${id}`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-    // console.log(response.data);
-    return response.data;
+    return data;
   } catch (error) {
     console.log(error);
-
-    getArtistInfo();
   }
 };
 
-// ==
-
-export const getTopTrecksActor = async (id) => {
-  const token = await localStorage.getItem("token");
+//
+export const getArtistById = async (id) => {
   try {
-    const response = await axios.get(
-      `https://api.spotify.com/v1/artists/${id}/top-tracks?market=es`,
+    const { data } = await axios.get(
+      `https://deezerdevs-deezer.p.rapidapi.com/artist/${id}`,
       {
         headers: {
-          Authorization: `Bearer ${token}`,
+          "X-RapidAPI-Key":
+            "b5f3830a22mshe45b47b7cb5bfcdp1dcd0djsn18b379206e77",
+          "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
         },
       }
     );
-    // console.log(response.data);
-    return response.data.tracks;
+
+    return data;
   } catch (error) {
     console.log(error);
-    //  getRefreshToken();
-    // getTopTrecksActor();
   }
 };
 
-export const getAudioNow = async (id) => {
-  const token = await localStorage.getItem("token");
+//
+export const searchTrack = async (q) => {
   try {
     const response = await axios.get(
-      `https://api.spotify.com/v1/tracks/${id}`,
+      `https://deezerdevs-deezer.p.rapidapi.com/search`,
       {
+        params: { q, limit: 10 },
         headers: {
-          Authorization: `Bearer ${token}`,
+          "X-RapidAPI-Key":
+            "b5f3830a22mshe45b47b7cb5bfcdp1dcd0djsn18b379206e77",
+          "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
         },
       }
     );
-    // console.log(response.data);
-
-    return response.data;
+    return response;
   } catch (error) {
     console.log(error);
-    //  getRefreshToken();
-    // getTopTrecksActor();
   }
 };

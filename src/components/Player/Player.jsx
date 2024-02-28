@@ -6,7 +6,7 @@ import { FaCirclePlay } from "react-icons/fa6";
 import clsx from "clsx";
 import { useSelector } from "react-redux";
 import { getPlayer } from "../../redux/selectors";
-import { getAudioNow } from "../../js/requsts";
+import { getTrackById } from "../../js/requsts";
 
 export const Player = () => {
   const { id } = useSelector(getPlayer);
@@ -15,15 +15,12 @@ export const Player = () => {
   const audioRef = useRef(null);
 
   useEffect(() => {
-    const getPlayer = async () => {
-      const response = await getAudioNow(id);
+    const getTrack = async () => {
+      const response = await getTrackById(id);
       setTrack(response);
-      setTimeout(() => {
-        audioRef.current.play();
-        setAudio(true);
-      }, 200);
+      setAudio(true);
     };
-    getPlayer();
+    getTrack();
   }, [id]);
   const playA = () => {
     if (!audio) {
@@ -38,18 +35,18 @@ export const Player = () => {
 
   return (
     <div className={css.backdrop}>
-      {track.name && (
+      {track.title && (
         <div className={css.playerCont}>
           <div className={css.imgCont}>
             <img
-              src={track.album.images[0].url}
-              alt=""
+              src={track.album.cover_big}
+              alt={track.title}
               width={70}
               height={70}
             />
             <div>
-              <p className={css.track}>{track.name}</p>
-              <p className={css.name}>{track.artists[0].name}</p>
+              <p className={css.track}>{track.title}</p>
+              <p className={css.name}>{track.artist.name}</p>
             </div>
           </div>
           <div className={css.control}>
@@ -64,7 +61,7 @@ export const Player = () => {
             </button>
           </div>
           <input className={css.range} type="range" name="" id="" />
-          <audio id="ref" ref={audioRef} src={track.preview_url}></audio>
+          <audio autoPlay id="ref" ref={audioRef} src={track.preview}></audio>
         </div>
       )}
     </div>

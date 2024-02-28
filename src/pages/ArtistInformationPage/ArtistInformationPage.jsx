@@ -2,43 +2,52 @@ import React, { useEffect, useState } from "react";
 import css from "./ArtistInformationPage.module.css";
 import { InfoArtistHero } from "../../components/InfoArtistHero/InfoArtistHero";
 import { ArtistTracksList } from "../../components/ArtistTracksList/ArtistTracksList";
-import { getArtistInfo, getTopTrecksActor } from "../../js/requsts";
+
 import { useParams } from "react-router-dom";
+import { getArtistById, searchTrack } from "../../js/requsts";
+import { Loader } from "../../components/Loader/Loader";
 
 export const ArtistInformationPage = () => {
   const [info, setInfo] = useState({});
   const [tracks, setTracks] = useState([]);
   const params = useParams();
   useEffect(() => {
-    const createArtist = async () => {
+    const createInfoArtist = async () => {
       try {
-        const response = await getArtistInfo(params.id);
+        const response = await getArtistById(params.id);
+
         setInfo(response);
       } catch (error) {
         console.log(error);
       }
     };
-    createArtist();
-    const createList = async () => {
+    createInfoArtist();
+  }, []);
+  useEffect(() => {
+    const getListTracks = async () => {
       try {
-        const response = await getTopTrecksActor(params.id);
-        setTracks(response);
+        const response = await searchTrack(info.name);
+
+        setTracks(response.data.data);
       } catch (error) {
         console.log(error);
       }
     };
-    createList();
-  }, []);
+    getListTracks();
+  }, [info]);
+
   return (
     <div className={css.info}>
-      {info.name && (
+      {info.name ? (
         <InfoArtistHero
           name={info.name}
-          src={info.images[0].url}
-          total={info.followers.total}
+          src={info.picture_big}
+          total={info.nb_fan}
         />
+      ) : (
+        <Loader />
       )}
-      {tracks && <ArtistTracksList tracks={tracks} />}
+      {tracks ? <ArtistTracksList tracks={tracks} /> : <Loader />}
     </div>
   );
 };
