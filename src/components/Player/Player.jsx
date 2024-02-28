@@ -2,7 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import css from "./Player.module.css";
 import { IoPlaySkipBackSharp } from "react-icons/io5";
 import { IoPlaySkipForwardSharp } from "react-icons/io5";
-import { FaCirclePlay } from "react-icons/fa6";
+import { IoPlay } from "react-icons/io5";
+import { FaPause } from "react-icons/fa6";
 import clsx from "clsx";
 import { useSelector } from "react-redux";
 import { getPlayer } from "../../redux/selectors";
@@ -53,8 +54,8 @@ export const Player = () => {
             <button type="button" className={css.btn}>
               <IoPlaySkipBackSharp size={25} className={css.next} />
             </button>
-            <button type="button" className={css.btn} onClick={playA}>
-              <FaCirclePlay size={35} className={dynamicClass} />
+            <button type="button" className={dynamicClass} onClick={playA}>
+              {audio ? <IoPlay size={20} /> : <FaPause size={18} />}
             </button>
             <button type="button" className={css.btn}>
               <IoPlaySkipForwardSharp size={25} className={css.next} />

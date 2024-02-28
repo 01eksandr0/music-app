@@ -57,10 +57,21 @@
   background-color: transparent;
 }
 .play {
-  fill: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: #fff;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  line-height: 0;
+  font-size: 0;
+  transition: background-color 250ms linear;
 }
+
 .active {
-  fill: rgb(250, 205, 102);
+  background-color: rgb(250, 205, 102);
 }
 .next {
   fill: #fff;
