@@ -7,6 +7,7 @@ import { LibraryPage } from "../../pages/LibraryPage/LibraryPage";
 import { ArtistInformationPage } from "../../pages/ArtistInformationPage/ArtistInformationPage";
 import { MyCollection } from "../MyCollection/MyCollection";
 import { MyPlaylists } from "../MyPlaylists/MyPlaylists";
+import { MyFavoriteTracks } from "../MyFavoriteTracks/MyFavoriteTracks";
 
 export const App = () => {
   return (
@@ -22,6 +23,10 @@ export const App = () => {
             <Route path="library" element={<LibraryPage />}>
               <Route index element={<MyCollection />}></Route>
               <Route path="my-playlists" element={<MyPlaylists />}></Route>
+              <Route
+                path="my-favorite-tracks"
+                element={<MyFavoriteTracks />}
+              ></Route>
             </Route>
           </Route>
         </Routes>

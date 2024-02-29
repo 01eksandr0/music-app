@@ -13,7 +13,7 @@ export const ArtistTracksList = ({ tracks }) => {
   return (
     <div className={css.container}>
       <ul className={css.list}>
-        {tracks.map((item, i) => (
+        {tracks.map((item) => (
           <li key={item.id} onClick={() => createPlayer(item.id)}>
             <ArtistTrackItem
               id={item.id}
