@@ -14,8 +14,9 @@ export const ArtistTracksList = ({ tracks }) => {
     <div className={css.container}>
       <ul className={css.list}>
         {tracks.map((item, i) => (
-          <li key={i} onClick={() => createPlayer(item.id)}>
+          <li key={item.id} onClick={() => createPlayer(item.id)}>
             <ArtistTrackItem
+              id={item.id}
               name={item.title}
               src={item.album.cover_big}
               author={item.artist.name}

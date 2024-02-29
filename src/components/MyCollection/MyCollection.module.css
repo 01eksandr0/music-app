@@ -1,0 +1,41 @@
+.container {
+  padding: 50px 0;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 30px;
+}
+.tracks {
+  width: 150px;
+  height: 234px;
+  background: rgb(19, 37, 140);
+  background: linear-gradient(
+    199deg,
+    rgba(19, 37, 140, 1) 36%,
+    rgba(147, 56, 218, 1) 95%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+}
+.heart {
+  height: 30px;
+  width: 30px;
+  color: rgba(255, 255, 255, 0.5);
+}
+.text {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.5);
+}
+@media screen and (min-width: 1280px) {
+  .tracks {
+    width: 213px;
+  }
+  .text {
+    font-size: 20px;
+  }
+}

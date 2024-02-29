@@ -5,6 +5,8 @@ import { Layout } from "../Layout/Layout";
 import { HomePage } from "../../pages/HomePage/HomePage";
 import { LibraryPage } from "../../pages/LibraryPage/LibraryPage";
 import { ArtistInformationPage } from "../../pages/ArtistInformationPage/ArtistInformationPage";
+import { MyCollection } from "../MyCollection/MyCollection";
+import { MyPlaylists } from "../MyPlaylists/MyPlaylists";
 
 export const App = () => {
   return (
@@ -12,12 +14,15 @@ export const App = () => {
       <Suspense>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route path="/" element={<HomePage />}></Route>
+            <Route index element={<HomePage />}></Route>
             <Route
               path="musician/:id"
               element={<ArtistInformationPage />}
             ></Route>
-            <Route path="library" element={<LibraryPage />}></Route>
+            <Route path="library" element={<LibraryPage />}>
+              <Route index element={<MyCollection />}></Route>
+              <Route path="my-playlists" element={<MyPlaylists />}></Route>
+            </Route>
           </Route>
         </Routes>
       </Suspense>

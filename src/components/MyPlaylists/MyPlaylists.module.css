@@ -1,0 +1,27 @@
+.container {
+  padding: 50px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+}
+.text {
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.5);
+}
+.btn {
+  width: 260px;
+  height: 45px;
+  border: none;
+  border-radius: 20px;
+  background: rgb(19, 37, 140);
+  background: linear-gradient(
+    199deg,
+    rgba(19, 37, 140, 1) 36%,
+    rgba(147, 56, 218, 1) 95%
+  );
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.5);
+}
+@media screen and (min-width: 1280px) {
+}
