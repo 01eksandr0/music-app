@@ -10,11 +10,10 @@ import { getPlayer } from "../../redux/selectors";
 
 export const Layout = () => {
   const player = useSelector(getPlayer);
-
   return (
     <div>
       <Header />
-      {player.status && <Player />}
+      {player.player.status && <Player />}
       <Main>
         <Navigation />
         <Outlet />

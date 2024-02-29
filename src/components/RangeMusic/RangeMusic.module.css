@@ -7,7 +7,13 @@
     align-items: center;
     gap: 5px;
   }
-
+  .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: none;
+  }
   .middle {
     display: block;
     width: 100px;

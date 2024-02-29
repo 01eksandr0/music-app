@@ -14,7 +14,7 @@ import { RangeMusic } from "../RangeMusic/RangeMusic";
 
 export const Player = () => {
   const dispatch = useDispatch();
-  const { id } = useSelector(getPlayer);
+  const id = useSelector(getPlayer);
   const [audio, setAudio] = useState(false);
   const [track, setTrack] = useState({});
   const [time, setTime] = useState(0);
@@ -23,7 +23,7 @@ export const Player = () => {
 
   useEffect(() => {
     const getTrack = async () => {
-      const response = await getTrackById(id);
+      const response = await getTrackById(id.player.id);
       setTrack(response);
       setAudio(true);
     };
@@ -42,7 +42,6 @@ export const Player = () => {
     const { duration, currentTime } = audioRef.current;
 
     if (duration == currentTime) {
-      console.log(1);
       dispatch(closePlayer());
     }
     setTime((currentTime / duration) * 100);
