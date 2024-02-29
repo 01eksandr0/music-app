@@ -8,7 +8,7 @@ export const getTrackById = async (id) => {
       {
         headers: {
           "X-RapidAPI-Key":
-            "b5f3830a22mshe45b47b7cb5bfcdp1dcd0djsn18b379206e77",
+            "7d089f5febmsh30fc858cae826dep1fb892jsnc72c7a2fc743",
           "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
         },
       }
@@ -28,7 +28,7 @@ export const getArtistById = async (id) => {
       {
         headers: {
           "X-RapidAPI-Key":
-            "b5f3830a22mshe45b47b7cb5bfcdp1dcd0djsn18b379206e77",
+            "7d089f5febmsh30fc858cae826dep1fb892jsnc72c7a2fc743",
           "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
         },
       }
@@ -49,7 +49,7 @@ export const searchTrack = async (q) => {
         params: { q, limit: 10 },
         headers: {
           "X-RapidAPI-Key":
-            "b5f3830a22mshe45b47b7cb5bfcdp1dcd0djsn18b379206e77",
+            "7d089f5febmsh30fc858cae826dep1fb892jsnc72c7a2fc743",
           "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
         },
       }

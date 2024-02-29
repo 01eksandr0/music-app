@@ -1,0 +1,53 @@
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.info {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+.list {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  flex-direction: column;
+  gap: 6px;
+}
+.btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 15px;
+  border: none;
+  background-color: transparent;
+  color: #fff;
+  font-size: 20px;
+}
+.backIcon {
+  width: 24px;
+  height: 24px;
+  background: rgb(19, 37, 140);
+  background: linear-gradient(
+    199deg,
+    rgba(19, 37, 140, 1) 36%,
+    rgba(147, 56, 218, 1) 95%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media screen and (min-width: 1280px) {
+  .container {
+  }
+}

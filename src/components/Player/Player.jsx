@@ -11,6 +11,7 @@ import { getTrackById } from "../../js/requsts";
 import { Range } from "../UI/Range/Range";
 import { closePlayer, openPlayer } from "../../redux/playerSlice";
 import { RangeMusic } from "../RangeMusic/RangeMusic";
+import { openInfo } from "../../redux/moreInfoSlice";
 
 export const Player = () => {
   const dispatch = useDispatch();
@@ -55,8 +56,18 @@ export const Player = () => {
     audioRef.current.volume = volume / 100;
   };
   const dynamicClass = clsx(css.play, audio && css.active);
+
+  const cliker = (e) => {
+    if (
+      e.target.nodeName === "DIV" ||
+      e.target.nodeName === "IMG" ||
+      e.target.nodeName === "P"
+    ) {
+      dispatch(openInfo(id.player.id));
+    }
+  };
   return (
-    <div className={css.backdrop}>
+    <div className={css.backdrop} onClick={cliker}>
       {track.title && (
         <div className={css.playerCont}>
           <div className={css.imgCont}>

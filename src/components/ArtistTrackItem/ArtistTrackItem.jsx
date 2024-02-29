@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getFavoritesTracks } from "../../redux/selectors";
 import { addNewTrack, deleteTrack } from "../../redux/favoriteTracksSlice";
 import clsx from "clsx";
+import { openInfo } from "../../redux/moreInfoSlice";
 
 export const ArtistTrackItem = ({ name, src, author, onClick, id }) => {
   const favorite = useSelector(getFavoritesTracks);
@@ -17,10 +18,17 @@ export const ArtistTrackItem = ({ name, src, author, onClick, id }) => {
     else setFavorite(false);
   }, [favorite]);
 
-  const toggleFavoriteTrack = () => {
+  const toggleFavoriteTrack = (e) => {
     if (isFavorit) dispatch(deleteTrack(id));
     else dispatch(addNewTrack(id));
+    e.stopPropagation();
   };
+
+  const openModal = (e) => {
+    e.stopPropagation();
+    dispatch(openInfo(id));
+  };
+
   const dinamicColor = clsx(css.icon, isFavorit && css.active);
   return (
     <div className={css.item} onClick={onClick}>
@@ -34,7 +42,7 @@ export const ArtistTrackItem = ({ name, src, author, onClick, id }) => {
         {name} - <span>{author}</span>
       </p>
       <p className={css.time}>{"0:30"}</p>
-      <button className={css.more} type="button">
+      <button className={css.more} type="button" onClick={openModal}>
         <IoMdMore size={20} color="rgb(250, 205, 102)" />
       </button>
     </div>

@@ -2,6 +2,7 @@ import React from "react";
 import css from "./HomeHero.module.css";
 import { FaHeart } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 export const HomeHero = () => {
   return (
@@ -17,14 +18,16 @@ export const HomeHero = () => {
         </div>
         <ul className={css.list}>
           <li>
-            <div className={css.heroElement}>
-              <div className={css.itemImgCont}>
-                <div className={css.itemImg}>
-                  <FaHeart className={css.icon} />
+            <Link to="/library/my-favorite-tracks">
+              <div className={css.heroElement}>
+                <div className={css.itemImgCont}>
+                  <div className={css.itemImg}>
+                    <FaHeart className={css.icon} />
+                  </div>
                 </div>
+                <p className={css.itemText}>My favorite</p>
               </div>
-              <p className={css.itemText}>My favorite</p>
-            </div>
+            </Link>
           </li>
           <li>
             <div className={css.heroElement}>

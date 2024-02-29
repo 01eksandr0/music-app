@@ -4,6 +4,7 @@ import persistReducer from "redux-persist/es/persistReducer";
 import persistStore from "redux-persist/es/persistStore";
 import storage from "redux-persist/lib/storage";
 import { favoritesTracksReducer } from "./favoriteTracksSlice";
+import { moreInfoReducer } from "./moreInfoSlice";
 
 const persistConfig = {
   key: "root",
@@ -15,6 +16,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   player: playerReduser,
   favoritesTracks: favoritesTracksReducer,
+  moreInfo: moreInfoReducer,
 });
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
