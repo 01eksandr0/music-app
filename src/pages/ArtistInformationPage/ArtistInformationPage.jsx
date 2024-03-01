@@ -40,6 +40,7 @@ export const ArtistInformationPage = () => {
     <div className={css.info}>
       {info.name ? (
         <InfoArtistHero
+          id={params.id}
           name={info.name}
           src={info.picture_big}
           total={info.nb_fan}

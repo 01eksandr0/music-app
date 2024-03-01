@@ -1,10 +1,14 @@
 import React from "react";
 import css from "./HomeHero.module.css";
 import { FaHeart } from "react-icons/fa";
-import { FaPlus } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { getPlaylists } from "../../redux/selectors";
+import { HomeHeroAdd } from "../HomeHeroAdd/HomeHeroAdd";
+import { HomeHeroPlaylist } from "../HomeHeroPlaylist/HomeHeroPlaylist";
 
 export const HomeHero = () => {
+  const playlists = useSelector(getPlaylists);
   return (
     <section className={css.hero}>
       <div className={css.heroContainer}>
@@ -30,34 +34,25 @@ export const HomeHero = () => {
             </Link>
           </li>
           <li>
-            <div className={css.heroElement}>
-              <div className={css.itemImgCont}>
-                <div className={css.itemPlus}>
-                  <FaPlus className={css.icon} />
-                </div>
-              </div>
-              <p className={css.itemText}>Add playlist</p>
-            </div>
+            {playlists[0] ? (
+              <HomeHeroPlaylist id={playlists[0].id} name={playlists[0].name} />
+            ) : (
+              <HomeHeroAdd />
+            )}
           </li>
           <li>
-            <div className={css.heroElement}>
-              <div className={css.itemImgCont}>
-                <div className={css.itemPlus}>
-                  <FaPlus className={css.icon} />
-                </div>
-              </div>
-              <p className={css.itemText}>Add playlist</p>
-            </div>
+            {playlists[1] ? (
+              <HomeHeroPlaylist id={playlists[1].id} name={playlists[1].name} />
+            ) : (
+              <HomeHeroAdd />
+            )}
           </li>
           <li>
-            <div className={css.heroElement}>
-              <div className={css.itemImgCont}>
-                <div className={css.itemPlus}>
-                  <FaPlus className={css.icon} />
-                </div>
-              </div>
-              <p className={css.itemText}>Add playlist</p>
-            </div>
+            {playlists[2] ? (
+              <HomeHeroPlaylist id={playlists[2].id} name={playlists[2].name} />
+            ) : (
+              <HomeHeroAdd />
+            )}
           </li>
         </ul>
       </div>

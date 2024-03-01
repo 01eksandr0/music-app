@@ -10,6 +10,7 @@ import { getFavoritesTracks, getInfo } from "../../redux/selectors";
 import { closeInfo, openInfo } from "../../redux/moreInfoSlice";
 import { getTrackById } from "../../js/requsts";
 import { addNewTrack, deleteTrack } from "../../redux/favoriteTracksSlice";
+import { openChoce } from "../../redux/chocePlaylistSlice";
 
 export const MoreInfoAbouteTracke = () => {
   const { id } = useSelector(getInfo);
@@ -37,6 +38,9 @@ export const MoreInfoAbouteTracke = () => {
       dispatch(deleteTrack(id));
     } else dispatch(addNewTrack(id));
   };
+  const choceIdPlaylist = () => {
+    dispatch(openChoce(id));
+  };
   return (
     <div className={css.container}>
       {info.album && (
@@ -60,7 +64,11 @@ export const MoreInfoAbouteTracke = () => {
               </button>
             </li>
             <li>
-              <button type="button" className={css.btn}>
+              <button
+                type="button"
+                className={css.btn}
+                onClick={choceIdPlaylist}
+              >
                 <IoMdAddCircle size={24} color="rgb(250, 205, 102)" />
                 Add to playlist
               </button>

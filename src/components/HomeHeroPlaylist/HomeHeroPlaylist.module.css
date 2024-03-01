@@ -1,0 +1,49 @@
+.itemPlus {
+  height: 90px;
+  width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(34, 150, 3);
+  background: linear-gradient(
+    150deg,
+    rgba(34, 150, 3, 1) 0%,
+    rgba(238, 216, 21, 1) 100%
+  );
+}
+.icon {
+  height: 24px;
+  width: 24px;
+  color: rgba(255, 255, 255, 0.5);
+}
+.heroElement {
+  height: 90px;
+  width: 150px;
+  background-color: rgb(40, 40, 40);
+  border-radius: 20px;
+  overflow: hidden;
+}
+@media screen and (min-width: 1280px) {
+  .itemImg,
+  .itemPlus {
+    height: 90px;
+    width: 90px;
+  }
+  .heroElement {
+    width: 320px;
+    background-color: rgb(40, 40, 40);
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 20px;
+  }
+  .icon {
+    height: 24px;
+    width: 24px;
+  }
+  .itemText {
+    font-size: 24px;
+    color: #fff;
+  }
+}

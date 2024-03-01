@@ -1,45 +1,42 @@
 import React, { useEffect, useState } from "react";
-import { ArtistTrackItem } from "../ArtistTrackItem/ArtistTrackItem";
+import css from "./Playlist.module.css";
+import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getFavoritesTracks } from "../../redux/selectors";
+import { getPlaylists } from "../../redux/selectors";
 import { getTrackById } from "../../js/requsts";
 import { openPlayer } from "../../redux/playerSlice";
-import css from "./MyFavoriteTracks.module.css";
-import { Loader } from "../Loader/Loader";
+import { ArtistTrackItem } from "../ArtistTrackItem/ArtistTrackItem";
 
-export const MyFavoriteTracks = () => {
-  const list = useSelector(getFavoritesTracks);
+export const Playlist = () => {
+  const dispatch = useDispatch();
+  const params = useParams();
+  const playlists = useSelector(getPlaylists);
+  const index = playlists.findIndex((i) => i.id === params.id);
   const [tracks, setTracks] = useState([]);
-  const [isLoader, setLoader] = useState(false);
+
   useEffect(() => {
-    const getArr = async () => {
+    const getList = async () => {
       const arr = [];
-      setLoader(true);
-      for (let i of list) {
-        try {
+      try {
+        for (let i of playlists[index].list) {
           const response = await getTrackById(i);
           arr.push(response);
-        } catch (error) {
-          console.log(error);
-        } finally {
-          setLoader(false);
         }
+        setTracks(arr);
+      } catch (error) {
+        console.log(error);
       }
-      setTracks([...arr]);
     };
-    getArr();
+    getList();
   }, []);
-
-  const dispatch = useDispatch();
-
   const createPlayer = (id) => {
     dispatch(openPlayer(id));
   };
   return (
     <section>
       <div className={css.container}>
-        {isLoader && <Loader />}
-        {tracks.length !== 0 && (
+        <h2 className={css.title}>{playlists[index].name}</h2>
+        {tracks.length !== 0 ? (
           <ul className={css.list}>
             {tracks.map((item) => (
               <li key={item.id} onClick={() => createPlayer(item.id)}>
@@ -52,6 +49,8 @@ export const MyFavoriteTracks = () => {
               </li>
             ))}
           </ul>
+        ) : (
+          <p className={css.text}>This playlist don't have tracks</p>
         )}
       </div>
     </section>

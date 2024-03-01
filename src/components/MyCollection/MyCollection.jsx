@@ -14,10 +14,12 @@ export const MyCollection = () => {
             <p className={css.text}>My favorites tracks</p>
           </div>
         </Link>
-        <div className={css.tracks}>
-          <FaPeopleGroup className={css.heart} />
-          <p className={css.text}>My favorites artists</p>
-        </div>
+        <Link to="/library/my-favorite-artists">
+          <div className={css.tracks}>
+            <FaPeopleGroup className={css.heart} />
+            <p className={css.text}>My favorites artists</p>
+          </div>
+        </Link>
       </div>
     </section>
   );
