@@ -6,7 +6,7 @@ const favoriteTracksSlice = createSlice({
   reducers: {
     addNewTrack: {
       reducer(state, action) {
-        state.push(action.payload.id);
+        if (!state.includes(action.payload.id)) state.push(action.payload.id);
       },
       prepare(id) {
         return { payload: { id } };

@@ -10,6 +10,7 @@ import { MyPlaylists } from "../MyPlaylists/MyPlaylists";
 import { MyFavoriteTracks } from "../MyFavoriteTracks/MyFavoriteTracks";
 import { MyFavoriteArtists } from "../MyFavoriteArtists/MyFavoriteArtists";
 import { Playlist } from "../Playlist/Playlist";
+import { SearchPage } from "../../pages/SearchPage/SearchPage";
 
 export const App = () => {
   return (
@@ -35,6 +36,7 @@ export const App = () => {
                 element={<MyFavoriteArtists />}
               ></Route>
             </Route>
+            <Route path="search" element={<SearchPage />}></Route>
           </Route>
         </Routes>
       </Suspense>

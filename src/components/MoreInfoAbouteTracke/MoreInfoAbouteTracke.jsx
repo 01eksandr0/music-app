@@ -24,7 +24,6 @@ export const MoreInfoAbouteTracke = () => {
       setInfo(response);
     };
     getInfo();
-    if (list.includes(id)) setFavorite(true);
   }, []);
   useEffect(() => {
     if (list.includes(id)) setFavorite(true);

@@ -22,9 +22,9 @@ export const MyFavoriteTracks = () => {
         } catch (error) {
           console.log(error);
         } finally {
-          setLoader(false);
         }
       }
+      setLoader(false);
       setTracks([...arr]);
     };
     getArr();
