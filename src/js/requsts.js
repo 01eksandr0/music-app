@@ -54,7 +54,7 @@ export const searchTrack = async (q) => {
         },
       }
     );
-    return response;
+    return response.data;
   } catch (error) {
     console.log(error);
   }

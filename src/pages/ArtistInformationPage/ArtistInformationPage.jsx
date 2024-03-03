@@ -28,7 +28,7 @@ export const ArtistInformationPage = () => {
       try {
         const response = await searchTrack(info.name);
 
-        setTracks(response.data.data);
+        setTracks(response.data);
       } catch (error) {
         console.log(error);
       }

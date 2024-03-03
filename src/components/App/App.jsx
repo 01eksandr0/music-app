@@ -11,6 +11,7 @@ import { MyFavoriteTracks } from "../MyFavoriteTracks/MyFavoriteTracks";
 import { MyFavoriteArtists } from "../MyFavoriteArtists/MyFavoriteArtists";
 import { Playlist } from "../Playlist/Playlist";
 import { SearchPage } from "../../pages/SearchPage/SearchPage";
+import { SearchBar } from "../SearchBar/SearchBar";
 
 export const App = () => {
   return (
@@ -37,6 +38,7 @@ export const App = () => {
               ></Route>
             </Route>
             <Route path="search" element={<SearchPage />}></Route>
+            <Route path="search/:name" element={<SearchBar />}></Route>
           </Route>
         </Routes>
       </Suspense>

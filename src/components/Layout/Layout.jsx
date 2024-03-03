@@ -22,7 +22,7 @@ export const Layout = () => {
   const createPlaylist = useSelector(getCreatePlayer);
   const choce = useSelector(getChoce);
   return (
-    <div>
+    <div style={{ paddingBottom: 90 }}>
       <Header />
       {player.player.status && <Player />}
       {info.status && <MoreInfoAbouteTracke />}

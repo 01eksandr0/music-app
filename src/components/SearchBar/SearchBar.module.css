@@ -1,0 +1,65 @@
+.form {
+  position: relative;
+}
+.input {
+  background-color: transparent;
+  border: 2px solid rgb(40, 40, 40);
+  height: 40px;
+  width: 260px;
+  border-radius: 20px;
+  outline: transparent;
+  padding-left: 45px;
+  padding-right: 20px;
+  caret-color: rgb(40, 40, 40);
+  transition: border 250ms linear;
+  color: #fff;
+  font-size: 22px;
+  &:focus,
+  &:hover {
+    border: 2px solid rgb(250, 205, 102);
+  }
+}
+.input:focus + .btn > .icon {
+  transform: rotate(180deg);
+  color: rgb(250, 205, 102);
+}
+.btn {
+  position: absolute;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 9px;
+  left: 14px;
+}
+.icon {
+  height: 23px;
+  width: 23px;
+  color: rgb(40, 40, 40);
+  transition: transform 250ms linear, color 250ms linear;
+}
+.list {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.img {
+  display: block;
+  height: 140px;
+  width: 140px;
+  border-radius: 20px;
+}
+.text {
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 10px;
+}
+@media screen and (min-width: 1280px) {
+  .img {
+    width: 270px;
+    height: 270px;
+  }
+}
