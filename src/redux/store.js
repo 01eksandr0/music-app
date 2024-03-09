@@ -11,7 +11,7 @@ import { playListsReducer } from "./playListsSlice";
 import { chocePlaylistReducer } from "./chocePlaylistSlice";
 
 const persistConfig = {
-  key: "root",
+  key: "musi",
   version: 1,
   storage,
   whitelist: ["favoritesTracks", "favoriteArtists", "playlists"],

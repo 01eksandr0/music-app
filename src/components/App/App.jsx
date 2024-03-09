@@ -12,6 +12,7 @@ import { MyFavoriteArtists } from "../MyFavoriteArtists/MyFavoriteArtists";
 import { Playlist } from "../Playlist/Playlist";
 import { SearchPage } from "../../pages/SearchPage/SearchPage";
 import { SearchBar } from "../SearchBar/SearchBar";
+import { UserPage } from "../../pages/UserPage/UserPage";
 
 export const App = () => {
   return (
@@ -39,6 +40,7 @@ export const App = () => {
             </Route>
             <Route path="search" element={<SearchPage />}></Route>
             <Route path="search/:name" element={<SearchBar />}></Route>
+            <Route path="my-profile" element={<UserPage />} />
           </Route>
         </Routes>
       </Suspense>

@@ -20,13 +20,16 @@ export const MoreInfoAbouteTracke = () => {
   const [info, setInfo] = useState({});
   useEffect(() => {
     const getInfo = async () => {
-      const response = await getTrackById(id);
+      const response = await getTrackById(`${id}`);
       setInfo(response);
     };
     getInfo();
+
+    if (list.includes(`${id}`)) setFavorite(true);
+    else setFavorite(false);
   }, []);
   useEffect(() => {
-    if (list.includes(id)) setFavorite(true);
+    if (list.includes(`${id}`)) setFavorite(true);
     else setFavorite(false);
   }, [list]);
   const closeModal = () => {
@@ -34,11 +37,11 @@ export const MoreInfoAbouteTracke = () => {
   };
   const toggleFavorite = () => {
     if (isFavorite) {
-      dispatch(deleteTrack(id));
-    } else dispatch(addNewTrack(id));
+      dispatch(deleteTrack(`${id}`));
+    } else dispatch(addNewTrack(`${id}`));
   };
   const choceIdPlaylist = () => {
-    dispatch(openChoce(id));
+    dispatch(openChoce(`${id}`));
   };
   return (
     <div className={css.container}>

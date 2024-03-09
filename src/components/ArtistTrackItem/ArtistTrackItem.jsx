@@ -14,19 +14,19 @@ export const ArtistTrackItem = ({ name, src, author, onClick, id }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (favorite.includes(id)) setFavorite(true);
+    if (favorite.includes(`${id}`)) setFavorite(true);
     else setFavorite(false);
   }, [favorite]);
 
   const toggleFavoriteTrack = (e) => {
-    if (isFavorit) dispatch(deleteTrack(id));
-    else dispatch(addNewTrack(id));
+    if (isFavorit) dispatch(deleteTrack(`${id}`));
+    else dispatch(addNewTrack(`${id}`));
     e.stopPropagation();
   };
 
   const openModal = (e) => {
     e.stopPropagation();
-    dispatch(openInfo(id));
+    dispatch(openInfo(`${id}`));
   };
 
   const dinamicColor = clsx(css.icon, isFavorit && css.active);
