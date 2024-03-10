@@ -9,12 +9,13 @@ import { favoriteArtistsReduser } from "./favoriteArtistsSlice";
 import { createPlayerReducer } from "./createPlayerSlice";
 import { playListsReducer } from "./playListsSlice";
 import { chocePlaylistReducer } from "./chocePlaylistSlice";
+import { usersReducer } from "./usersSlice";
 
 const persistConfig = {
-  key: "musi",
+  key: "music",
   version: 1,
   storage,
-  whitelist: ["favoritesTracks", "favoriteArtists", "playlists"],
+  whitelist: ["favoritesTracks", "favoriteArtists", "playlists", "users"],
 };
 
 const rootReducer = combineReducers({
@@ -25,6 +26,7 @@ const rootReducer = combineReducers({
   playlists: playListsReducer,
   createPlaylist: createPlayerReducer,
   chocePlaylist: chocePlaylistReducer,
+  users: usersReducer,
 });
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 

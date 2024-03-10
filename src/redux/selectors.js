@@ -5,3 +5,4 @@ export const getFavoriteArtists = (state) => state.favoriteArtists;
 export const getPlaylists = (state) => state.playlists;
 export const getCreatePlayer = (state) => state.createPlaylist;
 export const getChoce = (state) => state.chocePlaylist;
+export const getUsers = (state) => state.users;
