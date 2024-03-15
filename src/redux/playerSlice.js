@@ -2,19 +2,19 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const playerSlice = createSlice({
   name: "player",
-  initialState: { status: false, id: "" },
+  initialState: { status: false, list: [] },
   reducers: {
     openPlayer: {
       reducer(state, action) {
-        return { status: true, id: action.payload.id };
+        return { status: true, list: [...action.payload.list] };
       },
-      prepare(id) {
-        return { payload: { id } };
+      prepare(list) {
+        return { payload: { list: [...list] } };
       },
     },
     closePlayer: {
       reducer(state) {
-        return { status: false, id: "" };
+        return { status: false, list: [] };
       },
       prepare() {
         return {};

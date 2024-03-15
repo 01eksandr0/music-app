@@ -15,7 +15,9 @@ import { openInfo } from "../../redux/moreInfoSlice";
 
 export const Player = () => {
   const dispatch = useDispatch();
-  const id = useSelector(getPlayer);
+  const [counter, setCounter] = useState(0);
+  const { player } = useSelector(getPlayer);
+  const [id, setId] = useState(player.list[counter]);
   const [audio, setAudio] = useState(false);
   const [track, setTrack] = useState({});
   const [time, setTime] = useState(0);
@@ -23,8 +25,17 @@ export const Player = () => {
   audioRef.currentTime = time;
 
   useEffect(() => {
+    setCounter(0);
+    setId(player.list[0]);
+  }, [player]);
+
+  useEffect(() => {
+    setId(player.list[counter]);
+  }, [counter]);
+
+  useEffect(() => {
     const getTrack = async () => {
-      const response = await getTrackById(id.player.id);
+      const response = await getTrackById(id);
       setTrack(response);
       setAudio(true);
     };
@@ -41,9 +52,12 @@ export const Player = () => {
   };
   const musicLine = () => {
     const { duration, currentTime } = audioRef.current;
-
     if (duration == currentTime) {
-      dispatch(closePlayer());
+      if (!player.list[counter]) {
+        dispatch(closePlayer());
+        setCounter(0);
+      }
+      setCounter(counter + 1);
     }
     setTime((currentTime / duration) * 100);
   };
@@ -63,8 +77,24 @@ export const Player = () => {
       e.target.nodeName === "IMG" ||
       e.target.nodeName === "P"
     ) {
-      dispatch(openInfo(id.player.id));
+      dispatch(openInfo(id));
     }
+  };
+
+  const nextTrack = () => {
+    if (!player.list[counter]) {
+      dispatch(closePlayer());
+      setCounter(0);
+    }
+    setCounter(counter + 1);
+  };
+  const prevTrack = () => {
+    if (!counter) {
+      dispatch(closePlayer());
+      setCounter(0);
+      return;
+    }
+    setCounter(counter - 1);
   };
   return (
     <div className={css.backdrop} onClick={cliker}>
@@ -84,7 +114,7 @@ export const Player = () => {
           </div>
           <div className={css.range}>
             <div className={css.control}>
-              <button type="button" className={css.btn}>
+              <button type="button" className={css.btn} onClick={prevTrack}>
                 <IoPlaySkipBackSharp size={25} className={css.next} />
               </button>
               <button type="button" className={dynamicClass} onClick={playA}>
@@ -95,7 +125,11 @@ export const Player = () => {
                 )}
               </button>
               <button type="button" className={css.btn}>
-                <IoPlaySkipForwardSharp size={25} className={css.next} />
+                <IoPlaySkipForwardSharp
+                  size={25}
+                  className={css.next}
+                  onClick={nextTrack}
+                />
               </button>
             </div>
             <Range time={time} audioRef={audioRef} changeTime={changeTime} />

@@ -6,6 +6,8 @@ import { Button } from "../UI/Button/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { getFavoriteArtists } from "../../redux/selectors";
 import { addNewArtist, deleteArtist } from "../../redux/favoriteArtistsSlice";
+import { searchTrack } from "../../js/requsts";
+import { openPlayer } from "../../redux/playerSlice";
 
 export const InfoArtistHero = ({ name, src, total, id }) => {
   const authors = useSelector(getFavoriteArtists);
@@ -22,6 +24,17 @@ export const InfoArtistHero = ({ name, src, total, id }) => {
   };
 
   const dinamicStyle = isArray ? "red" : "#fff";
+
+  const createPlayer = async () => {
+    try {
+      const { data } = await searchTrack(name);
+      const arrayIds = data.map((i) => i.id);
+      console.log(arrayIds);
+      dispatch(openPlayer(arrayIds));
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div className={css.hero}>
       <div className={css.imgCont}>
@@ -34,7 +47,7 @@ export const InfoArtistHero = ({ name, src, total, id }) => {
         </p>
         <ul className={css.btnList}>
           <li>
-            <Button>
+            <Button onClick={createPlayer}>
               <IoMdPlayCircle color="rgb(250, 205, 102)" size={18} />
               Play all
             </Button>
