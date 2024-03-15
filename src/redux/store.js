@@ -12,7 +12,7 @@ import { chocePlaylistReducer } from "./chocePlaylistSlice";
 import { usersReducer } from "./usersSlice";
 
 const persistConfig = {
-  key: "music",
+  key: "myMusic",
   version: 1,
   storage,
   whitelist: ["favoritesTracks", "favoriteArtists", "playlists", "users"],

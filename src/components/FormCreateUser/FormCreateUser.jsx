@@ -62,7 +62,7 @@ export const FormCreateUser = () => {
             <ErrorMessage name="password" as="span" />
           </label>
           <button className={css.btn} type="submit">
-            Зареєструватися
+            Register
           </button>
         </Form>
       </Formik>

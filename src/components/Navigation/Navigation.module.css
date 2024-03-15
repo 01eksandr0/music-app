@@ -1,21 +1,50 @@
 .nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 2;
+}
+.list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  background-color: rgb(40, 40, 40);
+  width: 100%;
+  height: 50px;
+}
+.linkLogo {
   display: none;
+}
+.link svg {
+  color: rgba(239, 238, 224, 0.25);
+  height: 24px;
+  width: 24px;
+}
+.active svg {
+  color: rgb(250, 205, 102);
+  height: 24px;
+  width: 24px;
 }
 @media screen and (min-width: 1280px) {
   .nav {
-    display: flex;
     flex-direction: column;
     align-items: start;
     gap: 60px;
+    position: static;
+    width: auto;
   }
   .list {
-    display: flex;
     flex-direction: column;
-    align-items: center;
     gap: 30px;
-    background-color: rgb(40, 40, 40);
-    padding: 26px 17px;
     border-radius: 32px;
+    padding: 26px 17px;
+    height: auto;
+    width: auto;
   }
   .linkLogo {
     position: relative;

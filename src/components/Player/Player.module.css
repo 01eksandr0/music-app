@@ -5,7 +5,7 @@
   height: 125px;
   width: 100%;
   position: fixed;
-  bottom: 0;
+  bottom: 50px;
   left: 0;
   z-index: 3;
   display: flex;
@@ -87,6 +87,9 @@
   display: none;
 }
 @media screen and (min-width: 1280px) {
+  .backdrop {
+    bottom: 0;
+  }
   .playerCont {
     padding: 0 100px;
   }
