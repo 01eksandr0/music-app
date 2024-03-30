@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { ArtistTrackItem } from "../ArtistTrackItem/ArtistTrackItem";
 import { useDispatch, useSelector } from "react-redux";
 import { getFavoritesTracks } from "../../redux/selectors";
-import { getTrackById } from "../../js/requsts";
+import { getTrackById, searchTrack } from "../../js/requsts";
 import { openPlayer } from "../../redux/playerSlice";
 import css from "./MyFavoriteTracks.module.css";
 import { Loader } from "../Loader/Loader";
@@ -21,7 +21,6 @@ export const MyFavoriteTracks = () => {
           arr.push(response);
         } catch (error) {
           console.log(error);
-        } finally {
         }
       }
       setLoader(false);
@@ -32,8 +31,15 @@ export const MyFavoriteTracks = () => {
 
   const dispatch = useDispatch();
 
-  const createPlayer = (id) => {
-    dispatch(openPlayer(id));
+  const createPlayer = async (id) => {
+    try {
+      const { artist } = await getTrackById(id);
+      const { data } = await searchTrack(artist.name);
+      const arrayIds = [...new Set([parseInt(id), ...data.map((i) => i.id)])];
+      dispatch(openPlayer(arrayIds));
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <section>

@@ -3,7 +3,7 @@ import css from "./Playlist.module.css";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getPlaylists } from "../../redux/selectors";
-import { getTrackById } from "../../js/requsts";
+import { getTrackById, searchTrack } from "../../js/requsts";
 import { openPlayer } from "../../redux/playerSlice";
 import { ArtistTrackItem } from "../ArtistTrackItem/ArtistTrackItem";
 
@@ -29,8 +29,15 @@ export const Playlist = () => {
     };
     getList();
   }, []);
-  const createPlayer = (id) => {
-    dispatch(openPlayer(id));
+  const createPlayer = async (id) => {
+    try {
+      const { artist } = await getTrackById(id);
+      const { data } = await searchTrack(artist.name);
+      const arrayIds = [...new Set([parseInt(id), ...data.map((i) => i.id)])];
+      dispatch(openPlayer(arrayIds));
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <section>

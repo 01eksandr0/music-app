@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { IoSearchSharp } from "react-icons/io5";
 import css from "./SearchBar.module.css";
-import { searchTrack } from "../../js/requsts";
+import { getTrackById, searchTrack } from "../../js/requsts";
 import { ArtistTrackItem } from "../ArtistTrackItem/ArtistTrackItem";
 import { useDispatch } from "react-redux";
 import { openPlayer } from "../../redux/playerSlice";
@@ -42,8 +42,15 @@ export const SearchBar = () => {
     setValue(e.target.query.value.trim());
   };
 
-  const createPlayer = (id) => {
-    dispatch(openPlayer(id));
+  const createPlayer = async (id) => {
+    try {
+      const { artist } = await getTrackById(id);
+      const { data } = await searchTrack(artist.name);
+      const arrayIds = [...new Set([parseInt(id), ...data.map((i) => i.id)])];
+      dispatch(openPlayer(arrayIds));
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <div>
