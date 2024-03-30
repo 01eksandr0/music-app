@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import css from "./InfoArtistHero.module.css";
 import { IoMdPlayCircle } from "react-icons/io";
 import { RiHeart3Fill } from "react-icons/ri";
